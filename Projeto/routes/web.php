@@ -17,8 +17,13 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+Route::get('/dashboard', 'App\Http\Controllers\ReuniaoController@index')->middleware(['auth'])->name('dashboard');
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+*/
+Route::resource('/reuniaos', 'App\Http\Controllers\ReuniaoController');
+
 
 require __DIR__.'/auth.php';
