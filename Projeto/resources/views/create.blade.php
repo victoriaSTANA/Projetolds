@@ -8,10 +8,10 @@
     <div>
 
         @if(isset($reuniao))
-            <form name="formEdit" id="formEdit" action="{{url("reuniaos/$reuniao->id")}}" method="post">
+            <form name="formEdit" id="formEdit" enctype="multipart/form-data" action="{{url("reuniaos/$reuniao->id")}}" method="post">
             @method('PUT')    
         @else
-            <form name="formCad" id="formCad" action="{{url('reuniaos')}}" method="post">
+            <form name="formCad" id="formCad" action="{{url('reuniaos')}}" method="post" enctype="multipart/form-data">
         @endif
 
         
@@ -25,6 +25,7 @@
                     <option value="{{$user->id}}">{{$user->name}}</option>
                 @endforeach
             </select>
+            <input type="file" name="arquivo">
             <input type="submit" value="@if(isset($reuniao)) {{ __('Editar') }}   @else {{ __('Cadastrar') }}  @endif">
         </form>
     </div>

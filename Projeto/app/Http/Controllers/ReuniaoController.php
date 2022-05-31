@@ -57,6 +57,11 @@ class ReuniaoController extends Controller
             ]
             );
 
+        if($request->file('arquivo')->isValid()){
+            $namefile = $request->titulo . '.' . $request->data;
+            $request->file('arquivo')->storeAs('public/arquivos', $namefile);
+        }
+
         if($cad){
             return redirect('dashboard');
         }
