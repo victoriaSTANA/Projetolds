@@ -56,10 +56,12 @@ class ReuniaoController extends Controller
                 'id_user'=>$request->id_user
             ]
             );
-
+        $file = $request->file('arquivo');    
+        if(isset($file)){
         if($request->file('arquivo')->isValid()){
             $namefile = $request->titulo . '.' . $request->data;
             $request->file('arquivo')->storeAs('public/arquivos', $namefile);
+        }
         }
 
         if($cad){
